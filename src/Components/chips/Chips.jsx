@@ -28,7 +28,7 @@ class Chips extends Component {
 
   removeLast = () => {
     const { chipsList, highlightLast } = this.state;
-    if (highlightLast) {
+    if (highlightLast && chipsList.length) {
       this.removeChip(chipsList[chipsList.length - 1].id);
     } else {
       this.setState({
