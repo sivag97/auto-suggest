@@ -8,7 +8,8 @@ class Chips extends Component {
     super(props);
 
     this.state = {
-      chipsList: []
+      chipsList: [],
+      highlightLast: false
     };
   }
   handleSelect = ({ id, name }) => {
@@ -19,20 +20,34 @@ class Chips extends Component {
 
   removeChip = chipId => {
     this.setState(prevState => ({
-      chipsList: prevState.chipsList.filter(({ id }) => chipId !== id)
+      chipsList: prevState.chipsList.filter(({ id }) => chipId !== id),
+      highlightLast: false
     }));
   };
 
   removeLast = () => {
-    const { chipsList } = this.state;
-    this.removeChip(chipsList[chipsList.length - 1].id);
+    const { chipsList, highlightLast } = this.state;
+    if (highlightLast) {
+      this.removeChip(chipsList[chipsList.length - 1].id);
+    } else {
+      this.setState({
+        highlightLast: true
+      });
+    }
   };
 
-  renderChips = () => {
-    const { chipsList } = this.state;
+  removeHighlight = () =>
+    this.setState({
+      highlightLast: false
+    });
 
-    return chipsList.map(chip => (
-      <Chip key={chip.id}>
+  renderChips = () => {
+    const { chipsList, highlightLast } = this.state;
+    return chipsList.map((chip, index) => (
+      <Chip
+        highlightItem={highlightLast && index === chipsList.length - 1}
+        key={chip.id}
+      >
         <Image
           alt="user"
           src="https://img.icons8.com/dotty/80/000000/user.png"
@@ -53,6 +68,7 @@ class Chips extends Component {
           chipsList={this.state.chipsList}
           onSelect={this.handleSelect}
           removeLast={this.removeLast}
+          removeHighlight={this.removeHighlight}
         />
       </Container>
     );

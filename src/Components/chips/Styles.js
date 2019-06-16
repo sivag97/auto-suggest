@@ -3,7 +3,8 @@ import styled from "@emotion/styled";
 
 export const Container = styled("div")({
   display: "flex",
-  alignItems: "end"
+  alignItems: "end",
+  flexWrap: "wrap"
 });
 
 export const css = (...args) => ({ className: emoCSS(...args) });
@@ -129,17 +130,20 @@ export const Input = styled("input")(
       : null
 );
 
-export const Chip = styled("div")({
-  display: "flex",
-  position: "relative",
-  padding: "0 35px",
-  height: "50px",
-  fontSize: "16px",
-  lineHeight: "50px",
-  borderRadius: "25px",
-  backgroundColor: "#f1f1f1",
-  width: "max-content"
-});
+export const Chip = styled("div")(
+  {
+    display: "flex",
+    position: "relative",
+    padding: "0 35px",
+    height: "50px",
+    fontSize: "16px",
+    lineHeight: "50px",
+    borderRadius: "25px",
+    backgroundColor: "#f1f1f1",
+    width: "max-content"
+  },
+  ({ highlightItem }) => (highlightItem ? { border: "1px solid purple" } : null)
+);
 
 export const Image = styled("img")({
   float: "left",

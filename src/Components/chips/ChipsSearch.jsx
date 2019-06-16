@@ -27,6 +27,7 @@ class ChipsSearch extends Component {
       }
     } else if (changes.hasOwnProperty("inputValue")) {
       this.setState({ value: changes.inputValue });
+      this.props.removeHighlight();
     }
   };
 
