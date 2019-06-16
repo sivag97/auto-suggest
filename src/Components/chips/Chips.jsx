@@ -12,6 +12,7 @@ class Chips extends Component {
       highlightLast: false
     };
   }
+
   handleSelect = ({ id, name }) => {
     this.setState(prevState => ({
       chipsList: [...prevState.chipsList, { id, name }]
@@ -67,8 +68,8 @@ class Chips extends Component {
         <ChipsSearch
           chipsList={this.state.chipsList}
           onSelect={this.handleSelect}
-          removeLast={this.removeLast}
-          removeHighlight={this.removeHighlight}
+          onRemoveLast={this.removeLast}
+          onRemoveHighlight={this.removeHighlight}
         />
       </Container>
     );

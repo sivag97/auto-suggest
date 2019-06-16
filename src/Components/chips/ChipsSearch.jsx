@@ -12,7 +12,7 @@ class ChipsSearch extends Component {
   onKeyDown = event => {
     const { value } = this.state;
     if (event.keyCode === 8 && !value) {
-      this.props.removeLast();
+      this.props.onRemoveLast();
     }
   };
 
@@ -27,7 +27,7 @@ class ChipsSearch extends Component {
       }
     } else if (changes.hasOwnProperty("inputValue")) {
       this.setState({ value: changes.inputValue });
-      this.props.removeHighlight();
+      this.props.onRemoveHighlight();
     }
   };
 
