@@ -58,7 +58,7 @@ class ChipsSearch extends Component {
                 <Input
                   {...getInputProps({
                     isOpen,
-                    placeholder: "Enter a name",
+                    placeholder: "Enter a starwars char",
                     onKeyDown: this.onKeyDown
                   })}
                 />
